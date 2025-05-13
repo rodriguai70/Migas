@@ -540,3 +540,66 @@ body.pag-panaderia {
   margin: 0 auto 10px;
   width: 120px;
 }
+/* ========================= */
+/* MEDIA QUERIES - RESPONSIVE DESIGN */
+/* ========================= */
+@media screen and (max-width: 768px) {
+  .contenido-flex {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  #productos, #cesta {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 10px 0 !important;
+  }
+
+  .pagproductos #productos {
+    margin-right: 0 !important;
+  }
+
+  .tablaProductos th, .tablaProductos td {
+    font-size: 0.95em;
+    padding: 6px;
+  }
+
+  #encabezado {
+    font-size: 1.2em;
+    padding: 8px;
+  }
+
+  .form-registro, #login {
+    width: 90% !important;
+    padding: 20px;
+  }
+
+  .form-registro input[type="submit"],
+  .form-registro input[type="button"],
+  .pag-login input[type="submit"],
+  .pag-login button {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .formCategoria {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .formCategoria select,
+  .formCategoria input[type="submit"] {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .tablaProductos {
+    font-size: 0.9em;
+  }
+
+  #pie {
+    text-align: center;
+  }
+}
