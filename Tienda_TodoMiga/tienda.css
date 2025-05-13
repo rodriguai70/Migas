@@ -1,0 +1,542 @@
+body {
+  background-color: #ffcc00 !important; 
+  font-family: Comic Sans MS, cursive !important;
+  font-size: 20px !important;
+  color: #003366 !important;
+  
+  }
+
+
+.error {
+  font-size: 0.9em;
+  color: #900;
+  background-color: #ffff00;
+  padding: 5px;
+  border: 1px solid #900;
+  margin: 10px 0;
+}
+form {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+.divisor {
+  clear: both;
+  height: 0;
+  font-size: 1px;
+  line-height: 0px;
+}
+
+/* LOGIN */
+#login fieldset {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  padding: 20px;
+  border: 3px dashed #ff3300;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+}
+
+
+#login legend {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #333;
+}
+
+#login .campo {
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+#login label {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+#login input[type="text"],
+#login input[type="password"] {
+  font-size: 0.9em;
+  padding: 4px;
+  border: 1px solid #999;
+  width: 220px;
+}
+
+#login input[type="submit"] {
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* Páginas de productos y cesta */
+.pagproductos body,
+.pagcesta body {
+  background-color: #e6e6e6;
+}
+
+/* Contenedor general */
+#contenedor {
+  width: 90%;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #000;
+}
+
+#encabezado {
+  padding: 10px;
+  background-color: #ff3300;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  border: 4px dashed black; /* Borde completo como en la imagen */
+  margin: 10px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+
+}
+.tablaProductos {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #00ccff;
+  border: 2px solid #000;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.tablaProductos th,
+.tablaProductos td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1.3em;
+}
+
+.tablaProductos th {
+  background-color: #0099cc;
+  color: #fff;
+  font-size: 1em;
+}
+
+.tablaProductos td form {
+  display: inline-block;
+  margin: 0;
+}
+
+.tablaProductos input[type="submit"] {
+  background-color: #228B22;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.tablaProductos tr:nth-child(even) {
+  background-color: #b3ecff;
+}
+.tablaProductos img {
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+.tablaProductos td img {
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* CESTA - A LA DERECHA */
+#cesta {
+  width: 260px;
+  background-color: #00ccff;
+  border: 2px solid #000;
+  padding: 25px;
+  font-size: 1em;
+  border-radius: 10px;
+}
+.pagproductos #cesta {
+  float: right;
+  width: 16em;
+  background-color: #00ccff;
+  padding: 10px;
+  border: 2px solid #000;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.pagproductos #cesta h3 {
+  margin: 0 0 10px;
+  font-size: 1.1em;
+}
+
+.pagproductos #cesta p {
+  margin: 5px 0;
+  font-size: 13px;
+}
+
+.pagproductos #cesta input[type="submit"] {
+  margin-top: 5px;
+  width: 100%;
+  height: 30px;
+  background-color: #228B22;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+#cesta input[type="submit"] {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 1em;
+}
+
+/* PRODUCTOS */
+.pagproductos #productos {
+  margin-top: 0 !important;
+  margin: 10px 18em 10px 10px;
+  padding: 10px;
+  background-color: #00ccff;
+  border: 2px solid #000;
+  font-size: 14px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.pagproductos #productos p {
+  margin-bottom: 10px;
+}
+
+
+.pagproductos #productos table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0; 
+  margin: 0;
+  padding: 0;
+}
+
+.pagproductos #productos th,
+.pagproductos #productos td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  border-bottom: 1px solid #000;
+}
+
+.pagproductos #productos th {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.pagproductos #productos td form {
+  display: flex;
+  justify-content: center;
+}
+
+.pagproductos #productos input[type="submit"] {
+  background-color: #228B22;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.pagproductos #productos h2 {
+  text-align: center;
+  margin-bottom: 0px; 
+  padding-bottom: 0px;
+  font-size: 3.6em;   
+}
+.contenido-flex {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 20px;
+}
+.productos {
+  flex: 1;
+}
+#productos {
+  flex-grow: 1;
+  max-width: 70%;
+  background-color: #00ccff;
+  border: 2px solid #000;
+  padding: 10px;
+  margin-right: 0; 
+}
+#productos h2 {
+  margin-top: 0 !important;
+  margin-bottom: 10px !important;
+  padding: 0 !important;
+}
+/* PRODUCTOS EN LA CESTA */
+.cesta {
+  width: 250px;
+  background-color: #00ccff;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+.pagcesta #productos {
+  margin: 10px;
+  font-size: 14px;
+}
+
+.pagcesta #productos p {
+  margin: 8px 0;
+}
+
+/* PIE */
+#pie {
+  padding: 10px;
+  background-color: #9cf;
+  border-top: 2px solid #000;
+  text-align: right;
+}
+
+#pie input[type="submit"] {
+  background-color: #d9534f;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.contenedor-tabla h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 3.6em;
+  text-align: center;
+}
+.formCategoria {
+  margin-top: 10px;
+  font-family: Comic Sans MS, cursive;
+  font-size: 1em;
+  color: #fff;
+}
+
+.formCategoria label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.formCategoria select {
+  font-size: 1em;
+  padding: 5px;
+  border: 1px solid #000;
+  background-color: #fff;
+  color: #003366;
+  border-radius: 5px;
+}
+
+.formCategoria input[type="submit"] {
+  background-color: #228B22;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  margin-left: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+/* FORMULARIO DE REGISTRO CENTRADO */
+.registro-centrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* ocupa toda la altura de la ventana */
+  background-color: #ffcc00;
+}
+
+.form-registro {
+  width: 300px;
+  background-color: #fff8dc;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+  font-family: 'Comic Sans MS', cursive;
+  text-align: center;
+}
+
+.form-registro .logo img {
+  max-width: 80px;
+  margin-bottom: 10px;
+}
+
+.form-registro h1 {
+  font-size: 1.6em;
+  color: #ff3300;
+  margin-bottom: 5px;
+}
+
+.form-registro p {
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+.form-registro .campo {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-registro label {
+  font-weight: bold;
+}
+
+.form-registro input[type="text"],
+.form-registro input[type="password"] {
+  width: 100%;
+  padding: 6px;
+  font-size: 1em;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+.form-registro input[type="submit"],
+.form-registro input[type="button"] {
+  width: 48%;
+  margin: 5px 1%;
+  padding: 8px;
+  background-color: #228B22;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form-registro input[type="button"] {
+  background-color: #d9534f;
+}
+
+.form-registro .error {
+  background-color: #ffff99;
+  color: #cc0000;
+  border: 1px solid #cc0000;
+  padding: 6px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+/* Solo para la página de login */
+.pag-login {
+  background-color: #ffcc00;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 20px;
+  color: #003366;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('img/fondopanes1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+ 
+  
+  
+}
+
+.pag-login #login {
+  background-color: #fff8dc;
+  border: 2px solid #ffa500;
+  border-radius: 15px;
+  padding: 30px 40px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  max-width: 400px;
+  width: 90%;
+}
+
+.pag-login #login legend {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #cc3300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.pag-login .campo {
+  margin-bottom: 15px;
+}
+
+.pag-login .campo label {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.pag-login input[type="text"],
+.pag-login input[type="password"] {
+  font-size: 1em;
+  padding: 6px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.pag-login input[type="submit"],
+.pag-login button {
+  background-color: #228B22;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.pag-login .error {
+  background-color: #ffebcc;
+  border: 1px solid #cc3300;
+  padding: 8px;
+  margin-bottom: 10px;
+  color: #cc3300;
+  border-radius: 5px;
+}
+/* Fondo decorativo para login y registro */
+body.pag-panaderia {
+  background-image: url('img/fondopanes1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Estilo general del formulario centrado */
+#login {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border: 3px solid #ffcc00;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  max-width: 400px;
+  width: 100%;
+  font-family: Comic Sans MS, cursive;
+}
+
+#login h1 {
+  text-align: center;
+  color: #cc6600;
+  margin-bottom: 10px;
+}
+
+#login p {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+}
+
+#login .logo img {
+  display: block;
+  margin: 0 auto 10px;
+  width: 120px;
+}
