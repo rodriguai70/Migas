@@ -42,8 +42,32 @@ class CestaCompra {
     
     // Recupera la cesta de la compra almacenada en la sesión del usuario
     public static function carga_cesta() {
-        if (!isset($_SESSION['cesta'])) return new CestaCompra();
-        else return ($_SESSION['cesta']);
+        
+        $cesta= new CestaCompra();
+        $productosDB = DB::recuperarCestaBD($_SESSION['usuario']);
+        //recorrer el array que tiene codigo y cantidad, e irlos añadiendo a $cesta
+        foreach($productosDB as $producto){
+            $codigo = $producto['cod_producto'];
+            $cantidad = $producto['unidades'];
+            $cesta->cargarProductoDesdeBD($codigo, $cantidad);
+        }
+            
+        return $cesta;
+
+
+
+
+      /*  if (!isset($_SESSION['cesta'])) return new CestaCompra();
+        else return ($_SESSION['cesta']);*/
+        
+
+    }
+
+    public function cargarProductoDesdeBD($cod_producto, $cantidad) {
+       
+            $producto = DB::obtieneProducto($cod_producto);
+            $this->productos[$cod_producto] = array('producto' => $producto, 'cantidad' => $cantidad);
+        
     }
     
     // Muestra el HTML de la cesta de la compra, con todos los productos y cantidades
