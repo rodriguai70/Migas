@@ -9,7 +9,7 @@ require_once('include/CestaCompra.php');
 // Verificamos si hay una cesta activa
 if (isset($_SESSION['cesta']) && $_SESSION['cesta'] instanceof CestaCompra) {
     $cesta = $_SESSION['cesta'];
-    $productos = $cesta->getProductos(); 
+    $productos = $cesta->get_productos(); 
     setcookie('cesta_temporal', serialize($productos), time() + 7*24*60*60, "/"); // Cookie por 1 semana
 }
 
