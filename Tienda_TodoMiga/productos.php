@@ -3,30 +3,65 @@ require_once('include/DB.php');
 require_once('include/CestaCompra.php');
 
 session_start();
-
-if (!isset($_SESSION['usuario']))
-  die("Error - debe <a href='login.php'>identificarse</a>.<br />");
-
-$cesta = CestaCompra::carga_cesta();
-
-if (isset($_POST['vaciar'])) {
-  unset($_SESSION['cesta']);
-  $cesta = new CestaCompra();
-  DB::vaciarCesta($_SESSION['usuario']);
+// Invitado por parámetro
+if (isset($_GET['invitado']) && $_GET['invitado'] == 1) {
+    $_SESSION['invitado'] = true;
 }
 
-if (isset($_POST['enviar']) && isset($_POST['cod_producto'])) { 
-  $cesta->nuevo_articulo($_POST['cod_producto']);
-  $cesta->guarda_cesta();
-  DB::anadirProductoCesta($_POST['cod_producto'], $_SESSION['usuario']);
+// Verificar acceso
+if (!isset($_SESSION['usuario']) && !isset($_SESSION['invitado'])) {
+    die("Error - debe <a href='login.php'>identificarse</a>.<br />");
+}
+
+// Cargar la cesta adecuada
+if (isset($_SESSION['invitado'])) {
+    // INVITADO → sesión
+    if (!isset($_SESSION['cesta'])) {
+        $_SESSION['cesta'] = new CestaCompra();
+    }
+    $cesta = $_SESSION['cesta'];
+
+    // Cookie temporal de respaldo
+    setcookie('cesta_invitado', serialize($cesta->get_productos()), time() + 7 * 24 * 60 * 60, "/");
+}else {
+    // USUARIO → base de datos
+    $cesta = CestaCompra::carga_cesta();
+}
+
+if (isset($_POST['vaciar'])) {
+    if (isset($_SESSION['invitado'])) {
+        unset($_SESSION['cesta']);
+        setcookie('cesta_invitado', '', time() - 3600, "/"); // Borra cookie
+    } else {
+        DB::vaciarCesta($_SESSION['usuario']);
+    }
+    $cesta = new CestaCompra();
+}
+
+
+
+if (isset($_POST['enviar']) && isset($_POST['cod_producto'])) {
+    $cesta->nuevo_articulo($_POST['cod_producto']);
+    
+    if (isset($_SESSION['invitado'])) {
+        $_SESSION['cesta'] = $cesta; // Actualiza la sesión
+        setcookie('cesta_invitado', serialize($cesta->get_productos()), time() + 7 * 24 * 60 * 60, "/");
+    } else {
+        $cesta->guarda_cesta(); // Guarda en sesión solo por seguridad
+        DB::anadirProductoCesta($_POST['cod_producto'], $_SESSION['usuario']);
+    }
 }
 
 if (isset($_POST['quitar'])) {
-  $cesta->eliminaProducto($_POST['cod_producto']);
-  DB::quitarProductoCesta($_SESSION['usuario'], $_POST['cod_producto']);
-  header("Location: productos.php");
-  exit();
+    $cesta->eliminaProducto($_POST['cod_producto']);
+
+    if (!isset($_SESSION['invitado'])) {
+        DB::quitarProductoCesta($_SESSION['usuario'], $_POST['cod_producto']);
+    }
+    header("Location: productos.php");
+    exit();
 }
+
 
 function creaFormularioProductos($nomCateg = null)
 {
