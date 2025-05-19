@@ -5,13 +5,22 @@ require_once('include/Producto.php');
 // Recuperamos la información de la sesión
 session_start();
 
-// Y comprobamos que el usuario se haya autentificado
-if (!isset($_SESSION['usuario'])) 
+// Verificamos si el usuario es autenticado o invitado
+if (!isset($_SESSION['usuario']) && !isset($_SESSION['invitado'])) {
     die("Error - debe <a href='login.php'>identificarse</a>.<br />");
+}
 
-// Recuperamos la cesta de la compra
-$cesta = CestaCompra::carga_cesta();
-
+// Cargamos la cesta (desde sesión o base de datos)
+if (isset($_SESSION['invitado'])) {
+    // Cesta desde sesión
+    if (!isset($_SESSION['cesta'])) {
+        $_SESSION['cesta'] = new CestaCompra();
+    }
+    $cesta = $_SESSION['cesta'];
+} else {
+    // Cesta desde base de datos
+    $cesta = CestaCompra::carga_cesta();
+}
 
 function listaProductos($productos) {
   $coste = 0;
@@ -33,9 +42,20 @@ function listaProductos($productos) {
   echo "<hr />";
   echo "<p><strong>Precio total:</strong> " . number_format($coste, 2) . " €</p>";
 
+  // Si es invitado, redirigir a invitado al hacer clic en Pagar
+    if (isset($_SESSION['invitado'])) {
+        echo "<form action='invitado.php' method='post'>";
+        echo "<input type='hidden' name='redirigir_a_pago' value='1' />";
+
   echo "<form action='pagar.php' method='post'>";
   echo "<input type='submit' name='pagar' value='Pagar'/>";
   echo "</form>";
+}else {
+        // Usuario registrado → ir a pagar.php
+        echo "<form action='pagar.php' method='post'>";
+        echo "<input type='submit' name='pagar' value='Pagar'/>";
+        echo "</form>";
+    }
 }
 
 
@@ -65,7 +85,7 @@ function listaProductos($productos) {
   <br class="divisor" />
   <div id="pie">
     <form action='logoff.php' method='post'>
-        <input type='submit' name='desconectar' value='Desconectar usuario <?php echo $_SESSION['usuario']; ?>'/>
+        <input type='submit' name='desconectar' value='Desconectar usuario <?php echo isset($_SESSION['usuario']) ? $_SESSION['usuario'] : "invitado"; ?>'/>
     </form>        
   </div>
 </div>

@@ -5,61 +5,61 @@ require_once('include/CestaCompra.php');
 session_start();
 // Invitado por parámetro
 if (isset($_GET['invitado']) && $_GET['invitado'] == 1) {
-    $_SESSION['invitado'] = true;
+  $_SESSION['invitado'] = true;
 }
 
 // Verificar acceso
 if (!isset($_SESSION['usuario']) && !isset($_SESSION['invitado'])) {
-    die("Error - debe <a href='login.php'>identificarse</a>.<br />");
+  die("Error - debe <a href='login.php'>identificarse</a>.<br />");
 }
 
 // Cargar la cesta adecuada
 if (isset($_SESSION['invitado'])) {
-    // INVITADO → sesión
-    if (!isset($_SESSION['cesta'])) {
-        $_SESSION['cesta'] = new CestaCompra();
-    }
-    $cesta = $_SESSION['cesta'];
+  // INVITADO → sesión
+  if (!isset($_SESSION['cesta'])) {
+    $_SESSION['cesta'] = new CestaCompra();
+  }
+  $cesta = $_SESSION['cesta'];
 
-    // Cookie temporal de respaldo
-    setcookie('cesta_invitado', serialize($cesta->get_productos()), time() + 7 * 24 * 60 * 60, "/");
-}else {
-    // USUARIO → base de datos
-    $cesta = CestaCompra::carga_cesta();
+  // Cookie temporal de respaldo
+  setcookie('cesta_invitado', serialize($cesta->get_productos()), time() + 7 * 24 * 60 * 60, "/");
+} else {
+  // USUARIO → base de datos
+  $cesta = CestaCompra::carga_cesta();
 }
 
 if (isset($_POST['vaciar'])) {
-    if (isset($_SESSION['invitado'])) {
-        unset($_SESSION['cesta']);
-        setcookie('cesta_invitado', '', time() - 3600, "/"); // Borra cookie
-    } else {
-        DB::vaciarCesta($_SESSION['usuario']);
-    }
-    $cesta = new CestaCompra();
+  if (isset($_SESSION['invitado'])) {
+    unset($_SESSION['cesta']);
+    setcookie('cesta_invitado', '', time() - 3600, "/"); // Borra cookie
+  } else {
+    DB::vaciarCesta($_SESSION['usuario']);
+  }
+  $cesta = new CestaCompra();
 }
 
 
 
 if (isset($_POST['enviar']) && isset($_POST['cod_producto'])) {
-    $cesta->nuevo_articulo($_POST['cod_producto']);
-    
-    if (isset($_SESSION['invitado'])) {
-        $_SESSION['cesta'] = $cesta; // Actualiza la sesión
-        setcookie('cesta_invitado', serialize($cesta->get_productos()), time() + 7 * 24 * 60 * 60, "/");
-    } else {
-        $cesta->guarda_cesta(); // Guarda en sesión solo por seguridad
-        DB::anadirProductoCesta($_POST['cod_producto'], $_SESSION['usuario']);
-    }
+  $cesta->nuevo_articulo($_POST['cod_producto']);
+
+  if (isset($_SESSION['invitado'])) {
+    $_SESSION['cesta'] = $cesta; // Actualiza la sesión
+    setcookie('cesta_invitado', serialize($cesta->get_productos()), time() + 7 * 24 * 60 * 60, "/");
+  } else {
+    $cesta->guarda_cesta(); // Guarda en sesión solo por seguridad
+    DB::anadirProductoCesta($_POST['cod_producto'], $_SESSION['usuario']);
+  }
 }
 
 if (isset($_POST['quitar'])) {
-    $cesta->eliminaProducto($_POST['cod_producto']);
+  $cesta->eliminaProducto($_POST['cod_producto']);
 
-    if (!isset($_SESSION['invitado'])) {
-        DB::quitarProductoCesta($_SESSION['usuario'], $_POST['cod_producto']);
-    }
-    header("Location: productos.php");
-    exit();
+  if (!isset($_SESSION['invitado'])) {
+    DB::quitarProductoCesta($_SESSION['usuario'], $_POST['cod_producto']);
+  }
+  header("Location: productos.php");
+  exit();
 }
 
 
@@ -144,26 +144,26 @@ function muestraCestaCompra($cesta)
 
 
       <form method="post" action="productos.php" class="formCategoria">
-  <label for="cod_categoria">Categoría:</label>
-  <select id="cod_categoria" name="cod_categoria">
-    <option value="todas" <?php if (!isset($_POST['cod_categoria']) || $_POST['cod_categoria'] === 'todas') echo "selected"; ?>>Todos los productos</option>
-    <?php
-    $categorias = DB::getCategorias();
-    if (!empty($categorias)) {
-      foreach ($categorias as $categoria) {
-        echo "<option value=\"" . htmlspecialchars($categoria) . "\"";
-        if (isset($_POST['cod_categoria']) && $_POST['cod_categoria'] === $categoria) {
-          echo " selected";
-        }
-        echo ">" . $categoria . "</option>";
-      }
-    } else {
-      echo "<option disabled>No hay categorías disponibles</option>";
-    }
-    ?>
-  </select>
-  <input type="submit" name="mostrar" value="Mostrar" />
-</form>
+        <label for="cod_categoria">Categoría:</label>
+        <select id="cod_categoria" name="cod_categoria">
+          <option value="todas" <?php if (!isset($_POST['cod_categoria']) || $_POST['cod_categoria'] === 'todas') echo "selected"; ?>>Todos los productos</option>
+          <?php
+          $categorias = DB::getCategorias();
+          if (!empty($categorias)) {
+            foreach ($categorias as $categoria) {
+              echo "<option value=\"" . htmlspecialchars($categoria) . "\"";
+              if (isset($_POST['cod_categoria']) && $_POST['cod_categoria'] === $categoria) {
+                echo " selected";
+              }
+              echo ">" . $categoria . "</option>";
+            }
+          } else {
+            echo "<option disabled>No hay categorías disponibles</option>";
+          }
+          ?>
+        </select>
+        <input type="submit" name="mostrar" value="Mostrar" />
+      </form>
 
       <br><br>
     </div>
@@ -190,17 +190,17 @@ function muestraCestaCompra($cesta)
       } else {
         creaFormularioProductos();
       }
-      
+
       ?>
     </div>
 
     <br class="divisor" />
     <div id="pie">
       <form action='logoff.php' method='post'>
-        <input type='submit' name='desconectar' value='Desconectar usuario <?php echo $_SESSION['usuario']; ?>' />
+        <input type='submit' name='desconectar' value='Desconectar <?php echo isset($_SESSION['usuario']) ? htmlspecialchars($_SESSION['usuario']) : "invitado"; ?>' />
       </form>
+
     </div>
-  </div>
 </body>
 
 </html>
