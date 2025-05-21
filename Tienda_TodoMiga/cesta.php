@@ -41,23 +41,43 @@ function listaProductos($productos) {
 
   echo "<hr />";
   echo "<p><strong>Precio total:</strong> " . number_format($coste, 2) . " €</p>";
-
-  // Si es invitado, redirigir a invitado al hacer clic en Pagar
+  if($coste>0){//hay productos en la cesta, procedemos a pagar
+    // Si es invitado, redirigir a invitado al hacer clic en Pagar
     if (isset($_SESSION['invitado'])) {
         echo "<form action='invitado.php' method='post'>";
         echo "<input type='hidden' name='redirigir_a_pago' value='1' />";
 
-  echo "<form action='pagar.php' method='post'>";
-  echo "<input type='submit' name='pagar' value='Pagar'/>";
-  echo "</form>";
-}else {
+        echo "<form action='pagar.php' method='post'>";
+        echo "<input type='submit' name='pagar' value='Pagar'/>";
+        echo "</form>";
+    }else {
         // Usuario registrado → ir a pagar.php
         echo "<form action='pagar.php' method='post'>";
         echo "<input type='submit' name='pagar' value='Pagar'/>";
         echo "</form>";
-    }
+    } 
+  }else{//no hay productos en la cesta, msj de error
+    echo "Agregue un producto a la cesta";
+
+
+  }
+}
+// Guardar el total y los productos en cookies (válido para invitados y usuarios)
+$total = 0;
+$productos = $cesta->get_productos();
+$codigos = [];
+
+foreach ($productos as $item) {
+    $producto = $item['producto'];
+    $cantidad = $item['cantidad'];
+    $total += $producto->getprecio() * $cantidad;
+    $codigos[] = $producto->getcodproducto();
 }
 
+// Guardar cookies por 1 día
+setcookie("total_cesta", number_format($total, 2), time() + 86400, "/");
+setcookie("productos_cesta", implode(",", $codigos), time() + 86400, "/");
+setcookie("ultima_visita", date("Y-m-d H:i:s"), time() + 86400, "/");// Guardar fecha de última visita
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -72,6 +92,14 @@ function listaProductos($productos) {
 <body class="pagcesta">
 
 <div id="contenedor">
+  <?php
+if (isset($_COOKIE['total_cesta'])) {
+    echo "<p><strong>Última cesta:</strong> " . htmlspecialchars($_COOKIE['total_cesta']) . " €</p>";
+}
+if (isset($_COOKIE['ultima_visita'])) {
+    echo "<p><strong>Última visita:</strong> " . htmlspecialchars($_COOKIE['ultima_visita']) . "</p>";
+}
+?>
   <div id="encabezado">
     <h1>Cesta de la compra</h1>
   </div>

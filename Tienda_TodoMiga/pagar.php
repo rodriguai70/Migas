@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         // Lógica de pago o simulación de pago
                         unset($_SESSION['cesta']); // Vacía la cesta
                         DB::vaciarCesta($_SESSION['usuario']);
-                        $mensaje = "<h2>¡Gracias por su compra, " . htmlspecialchars($titular) . "!</h2>
+                        $mensaje = "<h2>¡Gracias por su compra, " . htmlspecialchars($_SESSION['usuario']) . "!</h2>
                         <p>El pago se ha realizado correctamente.</p>
                         <p><a href='productos.php'>Volver a la tienda</a></p>";
                     }

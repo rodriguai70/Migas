@@ -4,18 +4,34 @@ require_once('include/DB.php');
 
 if (isset($_POST['Entrar'])) {
 
-    if (empty($_POST['usuario']) || empty($_POST['password']))
+       if (empty($_POST['usuario']) || empty($_POST['contrasena'])) {
         $error = "Debes introducir un nombre de usuario y una contraseña";
-    else {
-        // Comprobamos las credenciales con la base de datos
+    } else {
         if (DB::verificaCliente($_POST['usuario'], $_POST['contrasena'])) {
-            session_start();
             $_SESSION['usuario'] = $_POST['usuario'];
+            echo "<form action='invitado.php' method='post'>";
+            echo "<input type='hidden' name='redirigir_a_pago' value='0' />";
             header("Location: pagar.php");
+            exit();
         } else {
-            // Si las credenciales no son válidas, se vuelven a pedir
             $error = "Usuario o contraseña no válidos!";
         }
+    }
+}
+
+if (isset($_POST['Registro'])) {
+    if (!empty($_POST['nuevo_usuario']) && !empty($_POST['nueva_contrasena'])) {
+        DB::insertarUsuario($_POST['nuevo_usuario'], $_POST['nueva_contrasena']);
+        // Copiar la cesta del invitado (si hay)
+        session_start();
+        $cestaInvitado = isset($_SESSION['cesta']) ? $_SESSION['cesta'] : [];
+
+        $_SESSION['usuario'] = $_POST['nuevo_usuario'];
+        $_SESSION['cesta'] = $cestaInvitado; // asignar cesta al nuevo usuario
+        header("Location: productos.php");
+        exit();
+    } else {
+        $error = "Debes introducir usuario y contraseña para registrarte";
     }
 }
 
