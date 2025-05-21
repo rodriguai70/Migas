@@ -44,6 +44,8 @@ $fondoAleatorio = $fondos[array_rand($fondos)];
                 <div class="logo">
                     <img src="img/logo.png" alt="Panadería Todomiga" style="display: block; margin: 0 auto; width: 100px;">
                 </div>
+                <h1>Bienvenido a TodoMiga</h1>
+                <p>Por favor, complete los datos solicitados:</p>
                 <legend>Login</legend>
                 <div><span class='error'><?php echo $error; ?></span></div>
                 <div class='campo'>

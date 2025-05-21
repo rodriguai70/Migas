@@ -4,7 +4,7 @@ require_once('include/DB.php');
 
 if (isset($_POST['Entrar'])) {
 
-       if (empty($_POST['usuario']) || empty($_POST['contrasena'])) {
+    if (empty($_POST['usuario']) || empty($_POST['contrasena'])) {
         $error = "Debes introducir un nombre de usuario y una contraseña";
     } else {
         if (DB::verificaCliente($_POST['usuario'], $_POST['contrasena'])) {
@@ -58,7 +58,9 @@ $fondoAleatorio = $fondos[array_rand($fondos)];
         <!-- Login -->
         <div class="panel">
             <img src="imagenes/logo.png" alt="TodoMiga" />
-            <h2>Login</h2>
+            <h1>Bienvenido a TodoMiga</h1>
+            <p>Por favor, complete los datos solicitados:</p>
+            <legend>Login</legend>
             <form method="post" action="invitado.php">
                 <div class="logo">
                     <img src="img/logo.png" alt="Panadería Todomiga" style="display: block; margin: 0 auto; width: 100px;">
@@ -80,7 +82,9 @@ $fondoAleatorio = $fondos[array_rand($fondos)];
         <!-- Registro -->
         <div class="panel">
             <img src="imagenes/logo.png" alt="TodoMiga" />
-            <h2>Registro</h2>
+            <h1>Bienvenido a TodoMiga</h1>
+            <p>Por favor, complete el formulario a continuación:</p>
+            <legend>Registro</legend>
             <form method="post" action="invitado.php">
                 <div class="logo">
                     <img src="img/todomiga3.png" alt="Panadería Todomiga" style="display: block; margin: 0 auto; width: 100px;">
@@ -92,7 +96,7 @@ $fondoAleatorio = $fondos[array_rand($fondos)];
                 <input type="password" name="nueva_contrasena" id="nueva_contrasena" required><br>
 
                 <input type="submit" class="red-button" name="Registro" value="Registro">
-               <a href="index.php" class="red-button">Volver</a>
+                <a href="index.php" class="red-button">Volver</a>
             </form>
         </div>
     </div>
