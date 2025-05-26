@@ -124,21 +124,7 @@ class DB
         return $producto;
     }
 
-   /* public static function verificaCliente($nombre, $contrasena) {
-        $sql = "SELECT md5($contrasena)as contra FROM usuarios ";
-        $sql .= "WHERE usuario='$nombre' ";
-        $sql .= ";";
-     
-        $resultado = self::ejecutaConsulta ($sql);
-        $verificado = false;
-        $contra="hola";
-        if(isset($resultado)) {
-            $fila = $resultado->fetch();
-            if($fila !== false) $verificado=true;
-            $contra=$fila['contra'];
-        }
-        return $contra;
-    }*/
+ 
 
     public static function verificaCliente($usu, $password)
 {
