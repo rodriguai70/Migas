@@ -12,9 +12,9 @@ class DB
         try {
 
             $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-            $dsn = "mysql:host=sql302.infinityfree.com;dbname=if0_38869507_todomiga";
-            $usuario = 'if0_38869507';
-            $contrasena = 'gqIo7sK34bD3Hr';
+            $dsn = "mysql:host=localhost;dbname=todomiga";
+            $usuario = 'root';
+            $contrasena = '';
 
             $todomiga = new PDO($dsn, $usuario, $contrasena, $opc);
             $resultado = false;
@@ -39,9 +39,9 @@ class DB
     protected static function ejecutaConsulta($sql)
     {
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-        $dsn = "mysql:host=sql302.infinityfree.com;dbname=if0_38869507_todomiga";
-        $usuario = 'if0_38869507';
-        $contrasena = 'gqIo7sK34bD3Hr';
+        $dsn = "mysql:host=localhost;dbname=todomiga";
+        $usuario = 'root';
+        $contrasena = '';
 
         $todomiga = new PDO($dsn, $usuario, $contrasena, $opc);
         $resultado = null;
@@ -130,9 +130,9 @@ class DB
 {
     try {
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-        $dsn = "mysql:host=sql302.infinityfree.com;dbname=todomiga";
-        $usuario = 'if0_38869507';
-        $contrasena = 'gqIo7sK34bD3Hr';
+        $dsn = "mysql:host=localhost;dbname=todomiga";
+        $usuario = 'root';
+        $contrasena = '';
 
         $todomiga = new PDO($dsn, $usuario, $contrasena, $opc);
 
@@ -170,8 +170,8 @@ class DB
     public static function anadirProductoCesta($codprod, $usuario)
 {
     try {
-        $dsn = "mysql:host=sql302.infinityfree.com;dbname=if0_38869507_todomiga";
-        $pdo = new PDO($dsn, "if0_38869507", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $dsn = "mysql:host=localhost;dbname=todomiga";
+        $pdo = new PDO($dsn, "root", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
         // Comprobamos si ya existe ese producto para el usuario
         $consulta = $pdo->prepare("SELECT unidades FROM cesta WHERE usuario = ? AND cod_producto = ?");
@@ -195,8 +195,8 @@ class DB
 public static function insertarProductoEnCesta($codprod, $usuario,$cantidad)
 {
    
-        $dsn = "mysql:host=sql302.infinityfree.com;dbname=if0_38869507_todomiga";
-        $pdo = new PDO($dsn, "if0_38869507", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $dsn = "mysql:host=localhost;dbname=todomiga";
+        $pdo = new PDO($dsn, "root", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
        
        
@@ -226,9 +226,9 @@ public static function recuperarCestaBD($usuario) {
 public static function getCategorias()
     {
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-        $dsn = "mysql:host=sql302.infinityfree.com;dbname=if0_38869507_todomiga";
-        $usuario = 'if0_38869507';
-        $contrasena = 'gqIo7sK34bD3Hr';
+        $dsn = "mysql:host=localhost;dbname=todomiga";
+        $usuario = 'root';
+        $contrasena = '';
 
         $todomiga = new PDO($dsn, $usuario, $contrasena, $opc);
         $resultado = null;
@@ -254,8 +254,8 @@ public static function getCategorias()
     public static function vaciarCesta($usuario)
 {
     try {
-        $dsn = "mysql:host=sql302.infinityfree.com;dbname=if0_38869507_todomiga";
-        $pdo = new PDO($dsn, "if0_38869507", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $dsn = "mysql:host=localhost;dbname=todomiga";
+        $pdo = new PDO($dsn, "root", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
         $vaciar = $pdo->prepare("DELETE FROM cesta WHERE usuario = ? ");
         $vaciar->execute([$usuario]);
@@ -270,8 +270,8 @@ public static function getCategorias()
     public static function quitarProductoCesta($usuario, $codprod)
 {
     try {
-        $dsn = "mysql:host=sql302.infinityfree.com;dbname=if0_38869507_todomiga";
-        $pdo = new PDO($dsn, "if0_38869507", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $dsn = "mysql:host=localhost;dbname=todomiga";
+        $pdo = new PDO($dsn, "root", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
         // Comprobamos si ya existe ese producto para el usuario
         $consulta = $pdo->prepare("SELECT unidades FROM cesta WHERE usuario = ? AND cod_producto = ?");
