@@ -1,24 +1,19 @@
 body {
   background-color: #ffcc00 ; 
   font-family: Comic Sans MS, cursive ;
-  font-size: 20px ;
-  color: #003366 ;
+  
+   margin: 0;
+    padding: 0;
   
   }
 
 
 .error {
-  font-size: 0.9em;
-  color: #900;
-  background-color: #ffff00;
-  border: 1px solid #900;
-  margin: 10px 0;
-  display: block;
-  border: 1px solid #ff0000;
-  padding: 10px;
-  border-radius: 8px;
-  font-weight: bold;
-  text-align: center;
+ color: red;
+    background-color: #ffe6e6;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid red;
 }
 .error-msg {
     background-color: #ffe6e6; 
@@ -280,10 +275,9 @@ form {
   font-weight: bold;
 }
 .pagproductos #productos h2 {
-  text-align: center;
-  margin-bottom: 0px; 
-  padding-bottom: 0px;
-  font-size: 3.6em;   
+  font-size: 2em;
+  margin-bottom: 10px;
+  padding-bottom: 5px; 
 }
 .contenido-flex {
   display: flex;
@@ -388,7 +382,8 @@ form {
 }
 
 .form-registro {
-  width: 300px;
+  width: 90%;
+  max-width: 400px;
   background-color: #fff8dc;
   padding: 20px;
   border: 2px solid #000;
@@ -590,21 +585,58 @@ body.pag-panaderia {
   margin: 0 auto 10px;
   width: 120px;
 }
-/* ========================= */
-/* MEDIA QUERIES - RESPONSIVE DESIGN */
-/* ========================= */
-@media screen and (max-width: 768px) {
-  .contenido-flex {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-  }
+/* Responsividad */
+/* Escritorio mediano */
+@media (max-width: 1024px) {
+    .form {
+        padding: 20px;
+    }
+}
+/* Teléfonos normales y tablets */
+@media (max-width: 768px) {
+    .form {
+        padding: 15px;
+    }
+
+    .form input,
+    .form textarea,
+    .form select {
+        font-size: 1em;
+    }
+}
+
+/* Teléfonos pequeños */
+@media (max-width: 480px) {
+    .form {
+        padding: 10px;
+    }
+
+    .form input,
+    .form textarea,
+    .form select {
+        font-size: 0.9em;
+    }
+
+    .btn,
+    .form input[type="submit"],
+    .form button[type="submit"] {
+        background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    }
+}
+
   
 
   #productos, #cesta {
-    max-width: 100% ;
-    width: 100% ;
-    margin: 10px 0 ;
+    overflow-y: auto;
+  max-height: 300px;
+  width: 100%; /* para pantallas pequeñas */
   }
 
   .pagproductos #productos {
@@ -651,9 +683,12 @@ body.pag-panaderia {
   }
 
   #pie {
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   }
-}
+
 /* ========================= */
 /* INVITADO */
 /* ========================= */
@@ -715,15 +750,72 @@ body.pag-panaderia {
 }
 
 
-        .invitado-btn {
-            display: block;
-            margin: 10px auto 0;
-            text-align: center;
-            font-weight: bold;
-            color: blue;
-            text-decoration: underline;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        
+.invitado-btn {
+display: block;
+margin: 10px auto 0;
+text-align: center;
+font-weight: bold;
+color: blue;
+text-decoration: underline;
+background: none;
+border: none;
+cursor: pointer;
+}
+  /* Estilos base para móviles */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.login-form, .product-list, .cart, .purchase-summary {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Hacer tabla horizontalmente desplazable si es necesario */
+table {
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+/* Botones adaptables */
+button, input[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+
+
+  .product-list {
+    padding: 1rem;
+  }
+
+  .product-list h2, .cart h2 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .cart {
+    padding: 1rem;
+    overflow-y: auto;
+    max-height: 300px; /* Ajustar según diseño */
+  }
+
+  .purchase-summary {
+    font-size: 1rem;
+  }
+
+      
