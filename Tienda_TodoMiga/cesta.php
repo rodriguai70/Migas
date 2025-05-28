@@ -41,9 +41,12 @@ function listaProductos($productos) {
 
   echo "<hr />";
   echo "<p><strong>Precio total:</strong> " . number_format($coste, 2) . " €</p>";
+ 
   if($coste>0){//hay productos en la cesta, procedemos a pagar
     // Si es invitado, redirigir a invitado al hacer clic en Pagar
-    if (isset($_SESSION['invitado'])) {
+    //mostrar por pantalla el estado de $_session['invitado']
+   
+    if ($_SESSION['invitado']==1) {
         echo "<form action='invitado.php' method='post'>";
         echo "<input type='hidden' name='redirigir_a_pago' value='1' />";
 

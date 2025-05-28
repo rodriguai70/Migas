@@ -40,6 +40,7 @@ if (isset($_POST['Registro'])) {
             DB::insertarUsuario($_POST['nuevo_usuario'], $_POST['nueva_contrasena']);
             $_SESSION['usuario'] = $_POST['nuevo_usuario'];
             $_SESSION['cesta'] = $cestaInvitado;
+            $_SESSION['invitado']=false;
 
             // Redirigir según el flujo
             if (!empty($_POST['redirigir_a_pago']) && $_POST['redirigir_a_pago'] == 1) {
