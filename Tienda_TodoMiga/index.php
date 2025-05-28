@@ -10,18 +10,18 @@ spl_autoload_register(function ($clase) {
 $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 
 
-$servidor = "localhost";
-$baseDatos = "todomiga";
+$servidor = "sql302.infinityfree.com";
+$baseDatos = "if0_38869507_todomiga";
 $dns = "mysql:host=$servidor;dbname=$baseDatos";
-$usuario = "root";
-$contrasena = "";
+$usuario = "if0_38869507";
+$contrasena = "gqIo7sK34bD3Hr";
 
 try {
     $todomiga = new PDO($dns, $usuario, $contrasena, $opc);
     $config = new Configuracion();
-    $config->setServidor("localhost");
-    $config->setBaseDatos("todomiga");
-    $config->setUsuario("root");
+    $config->setServidor("sql302.infinityfree.com");
+    $config->setBaseDatos("if0_38869507_todomiga");
+    $config->setUsuario("if0_38869507");
     $config->setPassword("");
     session_start();
 
