@@ -171,7 +171,7 @@ class DB
 {
     try {
         $dsn = "mysql:host=sql302.infinityfree.com;dbname=if0_38869507_todomiga";
-        $pdo = new PDO($dsn, "if0_38869507", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $pdo = new PDO($dsn, "if0_38869507", "gqIo7sK34bD3Hr", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
         // Comprobamos si ya existe ese producto para el usuario
         $consulta = $pdo->prepare("SELECT unidades FROM cesta WHERE usuario = ? AND cod_producto = ?");
@@ -196,7 +196,7 @@ public static function insertarProductoEnCesta($codprod, $usuario,$cantidad)
 {
    
         $dsn = "mysql:host=sql302.infinityfree.com;dbname=if0_38869507_todomiga";
-        $pdo = new PDO($dsn, "if0_38869507", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $pdo = new PDO($dsn, "if0_38869507", "gqIo7sK34bD3Hr", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
        
        
@@ -255,7 +255,7 @@ public static function getCategorias()
 {
     try {
         $dsn = "mysql:host=sql302.infinityfree.com;dbname=if0_38869507_todomiga";
-        $pdo = new PDO($dsn, "if0_38869507", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $pdo = new PDO($dsn, "if0_38869507", "gqIo7sK34bD3Hr", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
         $vaciar = $pdo->prepare("DELETE FROM cesta WHERE usuario = ? ");
         $vaciar->execute([$usuario]);
@@ -271,7 +271,7 @@ public static function getCategorias()
 {
     try {
         $dsn = "mysql:host=sql302.infinityfree.com;dbname=if0_38869507_todomiga";
-        $pdo = new PDO($dsn, "if0_38869507", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $pdo = new PDO($dsn, "if0_38869507", "gqIo7sK34bD3Hr", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
         // Comprobamos si ya existe ese producto para el usuario
         $consulta = $pdo->prepare("SELECT unidades FROM cesta WHERE usuario = ? AND cod_producto = ?");
