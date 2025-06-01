@@ -1,19 +1,26 @@
 body {
   background-color: #ffcc00 ; 
   font-family: Comic Sans MS, cursive ;
-  
-   margin: 0;
-    padding: 0;
+  font-size: 20px ;
+  color: #003366 ;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   
   }
 
 
 .error {
- color: red;
-    background-color: #ffe6e6;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid red;
+  font-size: 0.9em;
+  color: #900;
+  background-color: #ffff00;
+  margin: 10px 0;
+  display: block;
+  border: 1px solid #ff0000;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
 }
 .error-msg {
     background-color: #ffe6e6; 
@@ -40,7 +47,7 @@ form {
   line-height: 0px;
 }
 
-/* LOGIN */
+/* Login */
 #login fieldset {
   position: absolute;
   left: 50%;
@@ -124,7 +131,7 @@ form {
   text-align: center;
   font-size: 1.5em;
   font-weight: bold;
-  border: 4px dashed black; /* Borde completo como en la imagen */
+  border: 4px dashed black; 
   margin: 10px;
   font-family: 'Comic Sans MS', cursive, sans-serif;
 
@@ -179,12 +186,15 @@ form {
 }
 
 
-/* CESTA - A LA DERECHA */
+/* Cesta a la derecha */
 #cesta {
+  flex: 1 1 100%;
   width: 260px;
   background-color: #00ccff;
   border: 2px solid #000;
-  padding: 25px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
   font-size: 1em;
   border-radius: 10px;
 }
@@ -218,12 +228,20 @@ form {
   cursor: pointer;
 }
 #cesta input[type="submit"] {
+background-color: #228B22;
+  color: white;
+  border: none;
+  padding: 10px;
   width: 100%;
-  margin-top: 10px;
-  font-size: 1em;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
 }
 
-/* PRODUCTOS */
+/* Productos */
 .pagproductos #productos {
   margin-top: 0 ;
   margin: 10px 18em 10px 10px;
@@ -267,42 +285,60 @@ form {
 }
 
 .pagproductos #productos input[type="submit"] {
-  background-color: #228B22;
-  color: #fff;
+ background-color: #228B22;
+  color: white;
   border: none;
-  padding: 6px 12px;
-  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
 }
 .pagproductos #productos h2 {
-  font-size: 2em;
-  margin-bottom: 10px;
-  padding-bottom: 5px; 
+  text-align: center;
+  margin-bottom: 0px; 
+  padding-bottom: 0px;
+  font-size: 3.6em;   
 }
 .contenido-flex {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 30px;
+ flex-wrap: wrap;
   padding: 20px;
 }
 .productos {
   flex: 1;
 }
 #productos {
-  flex-grow: 1;
+  flex: 1 1 100%;
   max-width: 70%;
   background-color: #00ccff;
   border: 2px solid #000;
   padding: 10px;
   margin-right: 0; 
+  margin-bottom: 20px;
 }
 #productos h2 {
-  margin-top: 0 ;
-  margin-bottom: 10px ;
-  padding: 0 ;
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 15px;
 }
-/* PRODUCTOS EN LA CESTA */
+#productos th, #productos td {
+  padding: 10px;
+  border: 1px solid #000;
+  text-align: center;
+}
+
+#productos td form {
+  display: flex;
+  justify-content: center;
+}
+/* Productos en la cesta */
 .cesta {
   width: 250px;
   background-color: #00ccff;
@@ -329,9 +365,11 @@ form {
 
 #pie input[type="submit"] {
   background-color: #d9534f;
-  color: #fff;
-  padding: 6px 12px;
+  color: white;
   border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -372,7 +410,7 @@ form {
   cursor: pointer;
   border-radius: 5px;
 }
-/* FORMULARIO DE REGISTRO CENTRADO */
+/* Formulario de registro centrado */
 .registro-centrado {
   display: flex;
   justify-content: center;
@@ -382,8 +420,7 @@ form {
 }
 
 .form-registro {
-  width: 90%;
-  max-width: 400px;
+  width: 300px;
   background-color: #fff8dc;
   padding: 20px;
   border: 2px solid #000;
@@ -481,7 +518,7 @@ form {
   padding: 30px 40px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   max-width: 400px;
-  width: 90%;
+  width: 2%;
 }
 
 .pag-login #login legend {
@@ -585,58 +622,19 @@ body.pag-panaderia {
   margin: 0 auto 10px;
   width: 120px;
 }
-/* Responsividad */
-/* Escritorio mediano */
-@media (max-width: 1024px) {
-    .form {
-        padding: 20px;
-    }
-}
-/* Teléfonos normales y tablets */
-@media (max-width: 768px) {
-    .form {
-        padding: 15px;
-    }
 
-    .form input,
-    .form textarea,
-    .form select {
-        font-size: 1em;
-    }
-}
+/* Media Queries - Responsive */
 
-/* Teléfonos pequeños */
-@media (max-width: 480px) {
-    .form {
-        padding: 10px;
-    }
+@media screen and (max-width: 768px) {
+  .contenido-flex {
+    flex-direction: column;
+    padding: 10px;
+  }
 
-    .form input,
-    .form textarea,
-    .form select {
-        font-size: 0.9em;
-    }
-
-    .btn,
-    .form input[type="submit"],
-    .form button[type="submit"] {
-        background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-    }
-}
-
-  
-
-  #productos, #cesta {
-    overflow-y: auto;
-  max-height: 300px;
-  width: 100%; /* para pantallas pequeñas */
+  #productos,  #cesta {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin: 10px 0;
   }
 
   .pagproductos #productos {
@@ -662,8 +660,11 @@ body.pag-panaderia {
   .form-registro input[type="button"],
   .pag-login input[type="submit"],
   .pag-login button {
-    width: 100%;
-    margin: 10px 0;
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  font-size: 1em;
   }
 
   .formCategoria {
@@ -683,70 +684,67 @@ body.pag-panaderia {
   }
 
   #pie {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  }
-
-/* ========================= */
-/* INVITADO */
-/* ========================= */
- .contenedor-acceso {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 20px;
-        }
-
-        .panel {
-            border: 3px solid #ccc;
-            border-radius: 12px;
-            padding: 20px;
-            width: 300px;
-            background-color: #fff5e1;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .panel img {
-            display: block;
-            margin: 0 auto 10px;
-            width: 150px;
-        }
-
-        .panel h2 {
-            text-align: center;
-            color: #b85c00;
-        }
-
-        .panel input[type="text"],
-        .panel input[type="password"] {
-            width: 100%;
-            padding: 6px;
-            margin: 5px 0 15px;
-            border-radius: 5px;
-            border: 1px solid #aaa;
-        }
-
-        .boton-verde {
-            background-color: green;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-       .red-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none; 
-    display: inline-block;
     text-align: center;
+  }
+}
+
+/* Invitado */
+
+ .contenedor-acceso {
+display: flex;
+justify-content: center;
+gap: 40px;
+padding: 20px;
+}
+
+.panel {
+border: 3px solid #ccc;
+border-radius: 12px;
+padding: 20px;
+width: 300px;
+background-color: #fff5e1;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.panel img {
+display: block;
+margin: 0 auto 10px;
+width: 150px;
+}
+
+.panel h2 {
+text-align: center;
+color: #b85c00;
+}
+
+.panel input[type="text"],
+.panel input[type="password"] {
+width: 100%;
+padding: 6px;
+margin: 5px 0 15px;
+border-radius: 5px;
+border: 1px solid #aaa;
+}
+
+.boton-verde {
+background-color: green;
+color: white;
+border: none;
+padding: 6px 12px;
+border-radius: 6px;
+cursor: pointer;
+}
+
+.red-button {
+background-color: red;
+color: white;
+border: none;
+padding: 6px 12px;
+border-radius: 6px;
+cursor: pointer;
+text-decoration: none; 
+display: inline-block;
+text-align: center;
 }
 
 
@@ -761,141 +759,109 @@ background: none;
 border: none;
 cursor: pointer;
 }
-  /* Estilos base para móviles */
-body {
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  box-sizing: border-box;
-}
+        
 
-.container {
-  width: 100%;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-
-.login-form, .product-list, .cart, .purchase-summary {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-/* Hacer tabla horizontalmente desplazable si es necesario */
-table {
-  width: 100%;
-  overflow-x: auto;
-  display: block;
-}
-
-/* Botones adaptables */
-button, input[type="submit"] {
-  width: 100%;
-  padding: 0.75rem;
-  font-size: 1rem;
-  margin-top: 0.5rem;
-}
+/* mejoras responsive y botones movil */
 
 
-
-  .product-list {
-    padding: 1rem;
-  }
-
-  .product-list h2, .cart h2 {
-    font-size: 1.2rem;
-    text-align: center;
-  }
-
-  .cart {
-    padding: 1rem;
-    overflow-y: auto;
-    max-height: 300px; /* Ajustar según diseño */
-  }
-
-  .purchase-summary {
-    font-size: 1rem;
-  }
-  /* ==== RESPONSIVE MOVIL Y TABLET ==== */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+  /* Flex column para móvil */
   .contenido-flex {
-    flex-direction: column;
+    flex-direction: column !important;
     align-items: stretch;
     gap: 10px;
-    padding: 10px;
   }
 
+  /* Productos y Cesta al 100% */
   #productos,
   #cesta {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 20px auto !important;
+    float: none !important;
   }
 
-  #cesta {
-    padding: 15px;
-    font-size: 1em;
-    overflow-y: auto;
-    max-height: 400px;
+  .pagproductos #productos {
+    margin: 10px 0 !important;
+  }
+
+  /* Botones y formularios  */
+  input[type="submit"],
+  input[type="button"],
+  button {
+  display: block;
+  width: 100% !important;
+  margin: 10px 0;
+  font-size: 1em;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  #productos form {
+    display: block;
+    width: 100%;
+  }
+
+  /* Pie */
+  #pie form {
+    display: block;
+  }
+
+  /* Login y registro en móviles */
+.form-registro, #login {
+  background-color: #fff8dc;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin: 20px auto;
+  max-width: 400px;
+  width: 90%;
+}
+
+  .form-registro input[type="submit"],
+  .form-registro input[type="button"],
+  .pag-login input[type="submit"],
+  .pag-login button {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  /* Selector de categoría */
+  .formCategoria {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .formCategoria select,
+  .formCategoria input[type="submit"] {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  /* Ajuste tipografía tabla productos */
+  .tablaProductos th,
+  .tablaProductos td {
+    font-size: 0.95em;
+    padding: 6px;
+  }
+
+  #encabezado {
+    font-size: 1.2em;
+    padding: 8px;
   }
 
   .tablaProductos {
-    display: block;
-    overflow-x: auto;
     font-size: 0.9em;
   }
 
-  .tablaProductos table {
-    width: 100%;
-  }
-
   #pie {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
     text-align: center;
   }
-
-  #pie input[type="submit"] {
-    width: 90%;
-  }
-
-  .contenedor-acceso {
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    gap: 20px;
-  }
-
-  .panel {
-    width: 90%;
-    max-width: 360px;
-  }
-
-  .form-registro {
-    width: 90%;
-    max-width: 360px;
-  }
-
-  .form-registro input[type="submit"],
-  .form-registro input[type="button"] {
-    width: 100%;
-    margin: 8px 0;
-  }
-
-  .pag-login #login {
-    width: 90%;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  .pagproductos #productos,
-  .pagproductos #cesta {
-    float: none;
-  }
 }
-
-
-      

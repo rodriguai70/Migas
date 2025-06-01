@@ -25,12 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mensaje = "Nombre del titular inválido. <a href='pagar.php'>Volver</a>";
         } else {
             // Validar la fecha de caducidad
-            $caducidad = DateTime::createFromFormat('m/y', $caducidad);
+            $caducidad = DateTime::createFromFormat('Y-m', $caducidad);
             if (!$caducidad) {
                 $mensaje = "Fecha de caducidad inválida. <a href='pagar.php'>Volver</a>";
             } else {
                 // Comparar si la fecha de caducidad es posterior a la fecha actual
                 $currentDate = new DateTime(); // Fecha actual
+                $caducidad->modify('last day of this month');
                 if ($caducidad <= $currentDate) {
                     $mensaje = "La fecha de caducidad debe ser posterior a la fecha actual. <a href='pagar.php'>Volver</a>";
                 } else {
