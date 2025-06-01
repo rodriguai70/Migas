@@ -43,7 +43,8 @@ $fondoAleatorio = $fondos[array_rand($fondos)];
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Registro | Panadería Todomiga</title>
     <link rel="stylesheet" type="text/css" href="tienda.css">
 </head>

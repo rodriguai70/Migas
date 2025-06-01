@@ -63,7 +63,8 @@ $fondoAleatorio = $fondos[array_rand($fondos)];
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Acceso a TodoMiga</title>
     <link href="tienda.css" rel="stylesheet" type="text/css">
 </head>

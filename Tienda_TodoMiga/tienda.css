@@ -481,7 +481,7 @@ form {
   padding: 30px 40px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   max-width: 400px;
-  width: 2%;
+  width: 90%;
 }
 
 .pag-login #login legend {
@@ -817,5 +817,85 @@ button, input[type="submit"] {
   .purchase-summary {
     font-size: 1rem;
   }
+  /* ==== RESPONSIVE MOVIL Y TABLET ==== */
+@media (max-width: 768px) {
+  .contenido-flex {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  #productos,
+  #cesta {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  #cesta {
+    padding: 15px;
+    font-size: 1em;
+    overflow-y: auto;
+    max-height: 400px;
+  }
+
+  .tablaProductos {
+    display: block;
+    overflow-x: auto;
+    font-size: 0.9em;
+  }
+
+  .tablaProductos table {
+    width: 100%;
+  }
+
+  #pie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  #pie input[type="submit"] {
+    width: 90%;
+  }
+
+  .contenedor-acceso {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .panel {
+    width: 90%;
+    max-width: 360px;
+  }
+
+  .form-registro {
+    width: 90%;
+    max-width: 360px;
+  }
+
+  .form-registro input[type="submit"],
+  .form-registro input[type="button"] {
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .pag-login #login {
+    width: 90%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .pagproductos #productos,
+  .pagproductos #cesta {
+    float: none;
+  }
+}
+
 
       
